@@ -11,11 +11,12 @@ const Nav = () => {
   function closeMenu() {
     document.body.classList.remove("menu--open");
   }
+
   return (
     <nav>
       <div className="nav__container">
         <Link to="/">
-          <img src={LibraryLogo} className="" alt="" />
+          <img src={LibraryLogo} className="logo" alt="" />
         </Link>
         <ul className="nav__links">
           <li className="nav__list">
