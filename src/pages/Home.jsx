@@ -5,7 +5,7 @@ import Featured from "../components/Featured"
 import Discounted from '../components/Discounted'
 import Explore from '../components/Explore'
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
  <Landing />
@@ -16,3 +16,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home

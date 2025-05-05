@@ -30,7 +30,7 @@ export const books = [
     url: "https://m.media-amazon.com/images/I/91nujEwIpYL._AC_UF1000,1000_QL80_.jpg",
     originalPrice: 44,
     salePrice: 19,
-    rating: 4.5,
+    rating: 2.5,
   },
   {
     id: 5,

@@ -1,5 +1,6 @@
 import React from "react";
 import UndrawBooks from '../assets/Undraw_Books.svg'
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Landing = () => {
     return (
@@ -8,9 +9,9 @@ const Landing = () => {
                 <div className="header__description">
                     <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
                     <h2>Lorem ipsum dolor sit amet.</h2>
-                    <a href="#features">
+                    <Link to="#features">
                         <button className="btn">Browse books</button>
-                    </a>
+                    </Link>
                     <figure className="header__img--wrapper">
                         <img className="landing__img" src={UndrawBooks} alt="" />
                     </figure>
