@@ -12,7 +12,7 @@ const Landing = () => {
                         <button className="btn">Browse books</button>
                     </a>
                     <figure className="header__img--wrapper">
-                        <img src={UndrawBooks} alt="" />
+                        <img className="landing__img" src={UndrawBooks} alt="" />
                     </figure>
                 </div>
             </header>

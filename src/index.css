@@ -34,6 +34,11 @@ img {
   width: 100px;
 }
 
+.landing__img {
+  height: 50%;
+  width: 40%;
+}
+
 p {
   line-height: 1.5;
 }
