@@ -1,14 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link,useParams } from "react-router-dom/cjs/react-router-dom.min";
-import Rating from "../components/ui/Rating";
-import Price from "../components/ui/Price";
+import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Book from "../components/ui/Book";
-import { books } from "../data";
+import Price from "../components/ui/Price";
+import Rating from "../components/ui/Rating";
 
-const BookInfo = () => {
-    const { id } = useParams();
-    const book = books.find(book => +book.id === +id)
+const BookInfo = ({ books, addToCart, cart }) => {
+  const { id } = useParams();
+  const book = books.find((book) => +book.id === +id);
+
+  function addBookToCart(book) {
+    addToCart(book);
+  }
+
+  function bookExistsOnCart() {
+    return cart.find(book => book.id === +id);
+  }
+
   return (
     <div id="books_body">
       <main id="books__main">
@@ -18,7 +26,7 @@ const BookInfo = () => {
               <Link to="/books" className="book__link">
                 <FontAwesomeIcon icon="arrow-left" />
               </Link>
-              <Link to="books" className="book__link">
+              <Link to="/books" className="book__link">
                 <h2 className="book__selected--title--top">Books</h2>
               </Link>
             </div>
@@ -27,12 +35,13 @@ const BookInfo = () => {
                 <img src={book.url} alt="" />
               </figure>
               <div className="book__selected--description">
-                <h2 className="book__selected--title">
-                  {book.title}
-                </h2>
+                <h2 className="book__selected--title">{book.title}</h2>
                 <Rating rating={book.rating} />
                 <div className="book__selected--price">
-                  <Price salePrice={book.salePrice} originalPrice={book.originalPrice} />
+                  <Price
+                    originalPrice={book.originalPrice}
+                    salePrice={book.salePrice}
+                  />
                 </div>
                 <div className="book__summary">
                   <h3 className="book__summary--title">Summary</h3>
@@ -48,8 +57,14 @@ const BookInfo = () => {
                     saepe perspiciatis iure nesciunt vitae error, sed quo
                     consectetur aliquid neque, voluptatum autem fugiat officia?
                   </p>
-                  <button className="btn">Add to Cart</button>
                 </div>
+                {bookExistsOnCart() ? (
+                  <button className="btn">Checkout</button>
+                ) : (
+                  <button className="btn" onClick={() => addBookToCart(book)}>
+                    Add to Cart
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -57,14 +72,15 @@ const BookInfo = () => {
         <div className="books__container">
           <div className="row">
             <div className="book__selected--top">
-                <h2 className="book__selected--title--top">Recommended Books</h2>
+              <h2 className="book__selected--title--top">Recommended Books</h2>
             </div>
             <div className="books">
-            {books
+              {books
                 .filter((book) => book.rating === 5 && +book.id !== +id)
                 .slice(0, 4)
-                .map(book => <Book book={book} key={book.id} />)
-            }
+                .map((book) => (
+                  <Book book={book} key={book.id} />
+                ))}
             </div>
           </div>
         </div>

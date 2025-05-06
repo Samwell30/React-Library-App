@@ -1,8 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Rating from "./Rating";
 import Price from "./Price";
+
+//this is what each book looks like on the page
 
 const Book = ({ book }) => {
   return (
@@ -16,7 +17,7 @@ const Book = ({ book }) => {
         </Link>
       </div>
       <Rating rating={book.rating} />
-        <Price salePrice={book.salePrice} originalPrice={book.originalPrice}/>
+      <Price salePrice={book.salePrice} originalPrice={book.originalPrice} />
     </div>
   );
 };
