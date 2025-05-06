@@ -9,7 +9,7 @@ import Cart from "./pages/Cart";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [cart, setCart] = useState({})
+  const [cart, setCart] = useState([])
 
   function addToCart(book) {
     setCart([...cart, {...book, quantity: 1}]) 
@@ -47,13 +47,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Nav 
-        numberOfItem={numberOfItems()}
-        />
+        <Nav numberOfItems={numberOfItems()} />
         <Switch> {/* Wrap your routes with the Switch component */}
           <Route path="/" exact component={Home} />
           <Route path="/books" exact render={() => <Books books={books} />} /> {/* Added 'exact' here */}
-          <Route path="/books/:id" render={() => <BookInfo books={books} addToCart={addToCart} />} />
+          <Route path="/books/:id" render={() => <BookInfo books={books} addToCart={addToCart} cart={cart} />} />
           <Route path="/cart" render={() => 
           <Cart 
           books={books} 

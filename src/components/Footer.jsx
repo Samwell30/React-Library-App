@@ -20,7 +20,7 @@ const Footer = () => {
             <Link to="/Books" className="footer__link">
               Books
             </Link>
-            <Link to="cart" className="footer__link">
+            <Link to="/cart" className="footer__link">
               Cart
             </Link>
           </div>

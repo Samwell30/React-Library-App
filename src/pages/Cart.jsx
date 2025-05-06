@@ -6,7 +6,7 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
-      price += +((item.salePrice || item.orginalPrice) * item.quanitiy);
+      price += +((item.salePrice || item.originalPrice) * item.quantity);
     });
     return price;
   };
@@ -17,7 +17,7 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
         <div className="books__container">
           <div className="row">
             <div className="book__selected--top">
-              <h2 className="cart__title">Carts</h2>
+              <h2 className="cart__title">Cart</h2>
             </div>
             <div className="cart">
               <div className="cart__header">
@@ -41,9 +41,7 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
                           </span>
                           <span className="cart__book--price">
                             {(
-                              (book.salePrice || book.orginalPrice) *
-                              book.quantity
-                            ).toFixed(2)}
+                              (book.salePrice || book.originalPrice)).toFixed(2)}
                           </span>
                           <button
                             className="cart__book--remove"
@@ -52,19 +50,25 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
                             Remove
                           </button>
                         </div>
-                        <div className="cart__quantity">
-                          <input
-                            type="number"
-                            min={0}
-                            max={99}
-                            className="cart__input"
-                            value={book.quantity}
-                            onChange={(event) =>
-                              changeQuantity(book, event.target.value)
-                            }
-                          />
-                        </div>
-                        <div className="cart__total">{(total * book.quanitiy.toFixed(2))}</div>
+                      </div>
+
+                      <div className="cart__quantity">
+                        <input
+                          type="number"
+                          min={0}
+                          max={99}
+                          className="cart__input"
+                          value={book.quantity}
+                          onChange={(event) =>
+                            changeQuantity(book, event.target.value)
+                          }
+                        />
+                      </div>
+
+                      <div className="cart__total">
+                        {(
+                          (book.salePrice || book.originalPrice) * book.quantity
+                        ).toFixed(2)}
                       </div>
                     </div>
                   );
@@ -95,7 +99,7 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
                   </div>
                   <button
                     className="btn btn__checkout no-cursor"
-                    onClick={() => alert("Not implimented yet")}
+                    onClick={() => alert("Not real data")}
                   >
                     Proceed to checkout
                   </button>
